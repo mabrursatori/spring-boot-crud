@@ -19,6 +19,11 @@ public class CategoryService {
     private CategoryRepo categoryRepo;
 
     public Category save(Category category) {
+        if (category.getId() != null) {
+            Category currentCategory = categoryRepo.findById(category.getId()).get();
+            currentCategory.setName(category.getName());
+            category = currentCategory;
+        }
         return categoryRepo.save(category);
     }
 
@@ -38,11 +43,11 @@ public class CategoryService {
         categoryRepo.deleteById(id);
     }
 
-    public Iterable<Category> findByName(String name, Pageable pageable){
+    public Iterable<Category> findByName(String name, Pageable pageable) {
         return categoryRepo.findByNameContains(name, pageable);
     }
 
-    public Iterable<Category> saveBatch(Iterable<Category> categories){
+    public Iterable<Category> saveBatch(Iterable<Category> categories) {
         return categoryRepo.saveAll(categories);
     }
 

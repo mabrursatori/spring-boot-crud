@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.domain</groupId>
 	<artifactId>demoapi</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demoapi</name>
 	<description>Demo project for Spring Boot</description>
@@ -70,11 +71,20 @@
 			<version>3.0.0</version>
 		</dependency>
 
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>2.13.0-rc2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>demoapi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

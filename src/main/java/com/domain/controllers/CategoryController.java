@@ -41,7 +41,6 @@ public class CategoryController {
     public ResponseEntity<ResponseData<Category>> create(@Valid @RequestBody CategoryData categoryData, Errors errors) {
 
         ResponseData<Category> responseData = new ResponseData<>();
-
         if (errors.hasErrors()) {
             for (ObjectError error : errors.getAllErrors()) {
                 responseData.getMessages().add(error.getDefaultMessage());
@@ -105,7 +104,7 @@ public class CategoryController {
     }
 
     @PostMapping("/batch")
-    public ResponseEntity<ResponseData<Iterable<Category>>> createBatch(@RequestBody Category[] categories){
+    public ResponseEntity<ResponseData<Iterable<Category>>> createBatch(@RequestBody Category[] categories) {
 
         ResponseData<Iterable<Category>> responseData = new ResponseData<>();
         responseData.setPayload(categoryService.saveBatch(Arrays.asList(categories)));
